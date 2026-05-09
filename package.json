@@ -2,16 +2,22 @@
   "name": "deepfurry-site",
   "private": true,
   "version": "1.0.0",
-  "description": "DeepFurry organization site built with static HTML and Tailwind CSS.",
+  "description": "DeepFurry organization site built with static HTML, TypeScript, Vite, and Tailwind CSS.",
   "packageManager": "npm@11.9.0",
   "scripts": {
     "build:css": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./css/style.css --minify",
     "watch:css": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./css/style.css --watch",
-    "build:site": "node ./scripts/build-site.mjs",
-    "build": "npm run build:css && npm run build:site"
+    "dev": "tsx ./scripts/dev.ts",
+    "build": "npm run build:css && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@types/node": "^24.0.0",
     "@tailwindcss/cli": "^4.2.0",
-    "tailwindcss": "^4.2.0"
+    "tailwindcss": "^4.2.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0"
   }
 }
