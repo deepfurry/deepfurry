@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="DeepFurry 官网">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0d10"/>
+      <stop offset="1" stop-color="#131920"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="36%" r="52%">
+      <stop offset="0" stop-color="#9dd1ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#9dd1ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="390" cy="170" r="260" fill="url(#glow)"/>
+  <circle cx="945" cy="420" r="220" fill="#ffffff" fill-opacity="0.05"/>
+  <rect x="80" y="84" width="220" height="40" rx="12" fill="#ffffff" fill-opacity="0.08"/>
+  <text x="102" y="111" fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif" font-size="18" letter-spacing="4">GITHUB ORGANIZATION</text>
+  <text x="80" y="268" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-3">DeepFurry</text>
+  <text x="80" y="340" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="28">一个正在公开生长的组织入口</text>
+  <text x="80" y="392" fill="#94a3b8" font-family="Segoe UI, Arial, sans-serif" font-size="24">首页、项目、博客与联系信息都会在这里逐步补齐。</text>
+  <rect x="80" y="470" width="360" height="72" rx="18" fill="#9dd1ff"/>
+  <text x="258" y="517" text-anchor="middle" fill="#0b0d10" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">DeepFurry</text>
+</svg>
