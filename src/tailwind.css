@@ -21,8 +21,320 @@
 
     body {
         min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
         background:
-            radial-gradient(circle at top, rgba(157, 209, 255, 0.14), transparent 34%),
-            linear-gradient(180deg, #14171a 0%, #111315 28%, #0f1113 100%);
+            radial-gradient(circle at 16% 0%, rgba(157, 209, 255, 0.18), transparent 30%),
+            radial-gradient(circle at 84% 16%, rgba(255, 255, 255, 0.08), transparent 22%),
+            linear-gradient(180deg, #13171b 0%, #101317 42%, #0b0d10 100%);
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        background-size: 132px 132px;
+        opacity: 0.16;
+        mask-image: radial-gradient(circle at center, black 46%, transparent 92%);
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+            radial-gradient(circle at 50% 18%, rgba(157, 209, 255, 0.08), transparent 22%),
+            radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.05), transparent 28%);
+        opacity: 0.9;
+    }
+}
+
+@layer utilities {
+    @keyframes rise {
+        from {
+            opacity: 0.65;
+            transform: translateY(8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes drift {
+        0%,
+        100% {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        50% {
+            transform: translate3d(0, -14px, 0) scale(1.04);
+        }
+    }
+
+    @keyframes sweep {
+        0%,
+        100% {
+            opacity: 0.22;
+            transform: translateX(-10%);
+        }
+
+        50% {
+            opacity: 0.5;
+            transform: translateX(10%);
+        }
+    }
+
+    @keyframes orbit {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .animate-rise {
+        animation: rise 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .delay-1 {
+        animation-delay: 80ms;
+    }
+
+    .delay-2 {
+        animation-delay: 160ms;
+    }
+
+    .delay-3 {
+        animation-delay: 240ms;
+    }
+
+    .delay-4 {
+        animation-delay: 320ms;
+    }
+
+    .delay-5 {
+        animation-delay: 400ms;
+    }
+
+    .hero-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 0.75rem;
+        padding: 0.55rem 0.9rem;
+        font-size: 0.81rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgb(232, 244, 252);
+    }
+
+    .hero-backdrop {
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 18% 22%, rgba(125, 211, 252, 0.12), transparent 28%),
+            radial-gradient(circle at 82% 66%, rgba(255, 255, 255, 0.05), transparent 22%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 42%);
+    }
+
+    .hero-stage {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        background:
+            linear-gradient(160deg, rgba(11, 15, 19, 0.96), rgba(18, 23, 28, 0.84)),
+            rgba(255, 255, 255, 0.02);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 96px 96px;
+        opacity: 0.11;
+        mask-image: radial-gradient(circle at 50% 44%, black 30%, transparent 76%);
+    }
+
+    .hero-stage::after {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        pointer-events: none;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-grid {
+        position: absolute;
+        inset: -1px;
+        opacity: 0.42;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 96px 96px;
+        mask-image: radial-gradient(circle at 50% 46%, black 26%, transparent 74%);
+    }
+
+    .hero-glow {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(18px);
+        animation: drift 13s ease-in-out infinite;
+    }
+
+    .hero-glow-a {
+        animation-delay: -2s;
+    }
+
+    .hero-glow-b {
+        animation-delay: -6s;
+    }
+
+    .hero-glow-c {
+        left: -2rem;
+        top: 1.5rem;
+        width: 13rem;
+        height: 13rem;
+        background: rgba(125, 211, 252, 0.14);
+    }
+
+    .hero-glow-d {
+        right: -3rem;
+        bottom: -4rem;
+        width: 15rem;
+        height: 15rem;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-line {
+        position: absolute;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(191, 219, 254, 0.55), transparent);
+    }
+
+    .hero-line-a {
+        left: 11%;
+        right: 11%;
+        top: 29%;
+        animation: sweep 8s ease-in-out infinite;
+    }
+
+    .hero-line-b {
+        left: 17%;
+        right: 8%;
+        top: 66%;
+        animation: sweep 10s ease-in-out infinite reverse;
+    }
+
+    .hero-sweep {
+        position: absolute;
+        left: 50%;
+        width: 42%;
+        height: 1px;
+        transform: translateX(-50%);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+        opacity: 0.28;
+    }
+
+    .hero-sweep-a {
+        top: 43%;
+        animation: sweep 12s ease-in-out infinite;
+    }
+
+    .hero-sweep-b {
+        top: 53%;
+        animation: sweep 15s ease-in-out infinite reverse;
+    }
+
+    .hero-core {
+        position: absolute;
+        left: 50%;
+        top: 46%;
+        width: 10rem;
+        height: 10rem;
+        transform: translate(-50%, -50%);
+        border: 1px solid rgba(191, 219, 254, 0.42);
+        background:
+            radial-gradient(circle, rgba(125, 211, 252, 0.32), rgba(125, 211, 252, 0.04) 60%, transparent 64%);
+        box-shadow:
+            0 0 0 26px rgba(125, 211, 252, 0.05),
+            0 0 90px rgba(125, 211, 252, 0.22);
+    }
+
+    .hero-core::before,
+    .hero-core::after {
+        content: "";
+        position: absolute;
+        inset: -1.3rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 9999px;
+    }
+
+    .hero-core::before {
+        animation: orbit 28s linear infinite;
+    }
+
+    .hero-core::after {
+        inset: 1rem;
+        animation: orbit 18s linear reverse infinite;
+    }
+
+    .signal {
+        position: absolute;
+        display: flex;
+        min-width: 11rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(9, 12, 16, 0.62);
+        padding: 0.95rem 1rem;
+        border-radius: 0.75rem;
+        backdrop-filter: blur(18px);
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+        animation: rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .signal span {
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(226, 232, 240, 0.64);
+    }
+
+    .signal strong {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: rgb(248, 250, 252);
+    }
+
+    .signal-one {
+        left: 7%;
+        bottom: 11%;
+    }
+
+    .signal-two {
+        right: 7%;
+        top: 12%;
+        animation-delay: 140ms;
+    }
+
+    .signal-three {
+        right: 12%;
+        bottom: 22%;
+        animation-delay: 280ms;
     }
 }
